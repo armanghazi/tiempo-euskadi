@@ -1,0 +1,140 @@
+/* ========== Base Setup ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ========== Weather Grid ========== */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========== Weather Card ========== */
+.weather-card {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.weather-card h2 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.weather-card p {
+  font-size: 1em;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* ========== Error & No Data Containers ========== */
+.error-container,
+.no-data-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  font-size: 1.1em;
+  color: #ff4d4d;
+}
+
+/* ========== Responsive Layouts ========== */
+@media (max-width: 767px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .weather-card {
+    padding: 16px;
+    font-size: 0.95em;
+  }
+
+  .weather-card h2 {
+    font-size: 1.1em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .weather-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .weather-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+/* ========== Dark Mode via prefers-color-scheme ========== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .weather-card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+  }
+
+  .weather-card:hover {
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+  }
+
+  .error-container,
+  .no-data-container {
+    color: #ff9999;
+  }
+}
+
+/* ========== Optional: Manual Dark Mode via .dark class ========== */
+.dark body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark .weather-card {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+.dark .weather-card:hover {
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.dark .error-container,
+.dark .no-data-container {
+  color: #ff9999;
+}

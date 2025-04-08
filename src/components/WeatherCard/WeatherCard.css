@@ -1,0 +1,94 @@
+/* WeatherCard.css */
+
+.weather-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.city-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.temperature {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+.description {
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.temperature-range {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.min-temp {
+  color: #4dabf7;
+}
+
+.max-temp {
+  color: #ff6b6b;
+}
+
+.precipitation {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.favorite-button.favorite {
+  color: #ffd700;
+}
+
+@media (max-width: 768px) {
+  .weather-card {
+    padding: 1rem;
+  }
+
+  .weather-icon {
+    font-size: 2rem;
+  }
+
+  .temperature {
+    font-size: 1.5rem;
+  }
+}
