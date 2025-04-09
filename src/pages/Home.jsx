@@ -44,6 +44,7 @@ function HomePage() {
           onCityClick={handleCitySelect}
         />
       )}
+      
 
       <div className="theme-toggle">
         <ThemeToggle />

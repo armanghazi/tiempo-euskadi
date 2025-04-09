@@ -1,127 +1,119 @@
-.home-container {
-  padding: 2rem;
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.app-title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 2rem;
-}
-
-.error-message {
-  background-color: #ffebee;
-  color: #c62828;
-  padding: 1rem;
-  border-radius: 4px;
-  margin: 1rem auto;
-  max-width: 300px;
-  text-align: center;
-}
-
-.loading-message {
-  background-color: #e3f2fd;
-  color: #1565c0;
-  padding: 1rem;
-  border-radius: 4px;
-  margin: 1rem auto;
-  max-width: 300px;
-  text-align: center;
-}
-
-.view-mode-selector {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.view-mode-button {
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.view-mode-button:hover {
-  background-color: #f5f5f5;
-}
-
-.view-mode-button.active {
-  background-color: #4a90e2;
-  color: white;
-  border-color: #4a90e2;
-}
-
-.weather-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
-}
-
-
+/* === Base Styles (light mode) === */
 .home-page {
   padding: 2rem;
-  font-family: 'Segoe UI', sans-serif;
-  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #222;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .home-page h1 {
+  font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #0077b6;
 }
 
-/* Flex row for dropdown and button */
+/* === Weather Card (light) === */
+.weather-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* === Controls and Buttons === */
 .controls {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1rem; /* space between dropdown and button */
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
 }
 
 .filter-button {
   padding: 0.6rem 1.2rem;
-  background-color: #0077b6;
+  background-color: #0077cc;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
+  font-size: 1rem;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .filter-button:hover {
-  background-color: #005f8a;
+  background-color: #005fa3;
 }
 
-/* Responsive: stack vertically on small screens */
+/* === Theme Toggle Position === */
+.theme-toggle {
+  position: fixed;
+  right: 1rem;
+}
 
-@media (max-width: 600px) {
-  .home-container {
+/* === DARK MODE === */
+.dark-theme .home-page {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme .home-page h1 {
+  color: #ffffff;
+}
+
+.dark-theme .home-page h3 {
+  color: #ffffff;
+}
+
+.dark-theme .filter-button {
+  background-color: #bb86fc;
+  color: #121212;
+}
+
+.dark-theme .filter-button:hover {
+  background-color: #9b68e4;
+}
+
+.dark-theme .weather-card {
+  background-color: #1f1f1f;
+  color: #777676;
+  border: 1px solid #333;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .weather-card h3 {
+  color: #e9dddd;
+}
+
+/* Optional icon and color tweaks */
+.dark-theme .weather-icon {
+  filter: brightness(0.9) saturate(1.1);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .home-page h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
     padding: 1rem;
   }
 
-  .view-mode-selector {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .view-mode-button {
+  .filter-button {
     width: 100%;
-    max-width: 300px;
+    text-align: center;
   }
 
-  .weather-grid {
-    grid-template-columns: 1fr;
-  }
+
 }
