@@ -11,7 +11,7 @@ function App() {
         <header>
           <nav>
             <div className="logo">
-            <img src="/public/euskadi.png" alt="Euskadi" />
+            <img src="/euskadi.png" alt="Euskadi" />
             <h3>Pronostico del tiempo del Euskadi</h3>
             </div>
 
