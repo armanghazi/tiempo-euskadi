@@ -31,7 +31,15 @@ const cityCoordinates = {
   "Bakio": { "latitude": 43.4292, "longitude": -2.8088 },
   "Gernika": { "latitude": 43.3167, "longitude": -2.6833 },
   "Ermua": { "latitude": 43.1833, "longitude": -2.5000 },
-  "Amurrio": { "latitude": 43.0500, "longitude": -3.0000 }
+  "Amurrio": { "latitude": 43.0500, "longitude": -3.0000 },
+  'Londres':     { "latitude": 51.5074, "longitude": -0.1278 },
+  'Nueva York':  { "latitude": 40.7128, "longitude": -74.0060 },
+  'Los Ángeles': { "latitude": 34.0522, "longitude": -118.2437 },
+  'Tokio':       { "latitude": 35.6895, "longitude": 139.6917 },
+  'Pekín':       { "latitude": 39.9042, "longitude": 116.4074 },
+  'Isfahan':     { "latitude": 32.6539, "longitude": 51.6660 },
+  'Roma':        { "latitude": 41.9028, "longitude": 12.4964 },
+  'Barcelona':   { "latitude": 41.3851, "longitude": 2.1734 }
 };
 
 // Helper function to get weather description

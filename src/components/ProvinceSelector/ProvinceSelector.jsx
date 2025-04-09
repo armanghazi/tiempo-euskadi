@@ -15,6 +15,11 @@ const provinces = [
   {
     name: "Araba",
     cities: ["Vitoria-Gasteiz", "Amurrio", "Laguardia", "Salvatierra", "Laudio"]
+  },
+  {
+    name: "Otras ciudades importantes del mundo",
+    cities: ["Londres", "Nueva York", "Los Ángeles", "Tokio", "Pekín", "Isfahan", "Roma", "Barcelona"]
+    
   }
 ];
 
