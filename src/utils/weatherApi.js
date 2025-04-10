@@ -1,5 +1,5 @@
 // Predefined coordinates for Basque cities
-const cityCoordinates = {
+export const cityCoordinates = {
   'Bilbao': { latitude: 43.2627, longitude: -2.9253 },
   'Vitoria-Gasteiz': { latitude: 42.8467, longitude: -2.6716 },
   'San Sebastián-Donostia': { latitude: 43.3183, longitude: -1.9812 },
@@ -43,7 +43,7 @@ const cityCoordinates = {
 };
 
 // Helper function to get weather description
-const getWeatherDescription = (code) => {
+export const getWeatherDescription = (code) => {
   const weatherDescriptions = {
     0: 'Despejado',
     1: 'Mayormente despejado',
@@ -74,66 +74,55 @@ const getWeatherDescription = (code) => {
 };
 
 // Helper function to format date
-const formatDate = (dateString) => {
+export const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
 };
 
-// Main function to fetch weather data
+// Función principal para obtener datos del tiempo
 export const fetchWeatherData = async (city, includeForecast = false) => {
   try {
     const coordinates = cityCoordinates[city];
     if (!coordinates) {
-      throw new Error(`No se encontraron coordenadas para ${city}`);
+      throw new Error('Ciudad no encontrada');
     }
 
-    const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&current=temperature_2m,weathercode&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=Europe%2FMadrid`
-    );
+    const { latitude, longitude } = coordinates;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid`;
 
+    const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`Error HTTP! estado: ${response.status}`);
+      throw new Error('Error al obtener datos del tiempo');
     }
 
     const data = await response.json();
-    
-    // Ensure data contains current and daily weather
-    if (!data.current || !data.daily) {
-      throw new Error(`Datos incompletos para ${city}`);
+
+    const currentWeather = {
+      temperature: data.current.temperature_2m,
+      description: getWeatherDescription(data.current.weather_code),
+      weatherCode: data.current.weather_code
+    };
+
+    if (!includeForecast) {
+      return currentWeather;
     }
 
-    if (includeForecast) {
-      // Process forecast data for detail page
-      const forecast = data.daily.time.map((date, index) => ({
-        date: formatDate(date),
-        maxTemp: data.daily.temperature_2m_max[index],
-        minTemp: data.daily.temperature_2m_min[index],
-        precipitation: data.daily.precipitation_probability_max[index],
-        description: getWeatherDescription(data.daily.weathercode[index]),
-        weatherCode: data.daily.weathercode[index]
-      }));
+    const forecast = data.daily.time.map((date, index) => ({
+      date: new Date(date).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }),
+      maxTemp: data.daily.temperature_2m_max[index],
+      minTemp: data.daily.temperature_2m_min[index],
+      precipitation: data.daily.precipitation_probability_max[index],
+      description: getWeatherDescription(data.daily.weather_code[index]),
+      weatherCode: data.daily.weather_code[index]
+    }));
 
-      return {
-        current: {
-          temperature: data.current.temperature_2m,
-          description: getWeatherDescription(data.current.weathercode),
-          weatherCode: data.current.weathercode
-        },
-        forecast: forecast
-      };
-    } else {
-      // Return current weather data for main page
-      return {
-        temperature: data.current.temperature_2m,
-        description: getWeatherDescription(data.current.weathercode),
-        maxTemp: data.daily.temperature_2m_max[0],
-        minTemp: data.daily.temperature_2m_min[0],
-        precipitation: data.daily.precipitation_probability_max[0],
-        weatherCode: data.current.weathercode
-      };
-    }
+    return {
+      current: currentWeather,
+      forecast: forecast
+    };
   } catch (error) {
-    console.error(`Error al obtener datos del tiempo para ${city}:`, error);
+    console.error('Error fetching weather data:', error);
     throw error;
   }
 };
+

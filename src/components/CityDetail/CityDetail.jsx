@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchWeatherData } from '../../utils/weatherApi';
+import { fetchWeatherData } from '../FetchWeatherData.jsx';
 import { getWeatherIcon } from '../../utils/weatherUtils';
-import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'; 
+import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx';
 import './CityDetail.css';
 
 const CityDetail = () => {
@@ -66,9 +66,7 @@ const CityDetail = () => {
         </button>
         <ThemeToggle />
       </div>
-      
       <h1>{city}</h1>
-      
       {weatherData && (
         <div className="weather-info">
           <div className="current-weather">
@@ -77,15 +75,19 @@ const CityDetail = () => {
               <div className="weather-icon">
                 {getWeatherIcon(weatherData.current.weatherCode)}
               </div>
+              <div className="description">{weatherData.current.description}</div>
               <div className="temperature">
                 <span className="current-temp">{Math.round(weatherData.current.temperature)}°</span>
+                <div className="min-max-temp">
+                  <span className="max-temp">Max: {Math.round(weatherData.current.maxTemp)}°</span>
+                  <span className="min-temp">Min: {Math.round(weatherData.current.minTemp)}°</span>
+                </div>
               </div>
-              <div className="description">{weatherData.current.description}</div>
+
             </div>
           </div>
-
           <div className="forecast">
-            <h2>Pronóstico 7 días</h2>
+            <h2>Pronóstico 15 días</h2>
             <div className="forecast-grid">
               {weatherData.forecast.map((day, index) => (
                 <div key={index} className="forecast-card">

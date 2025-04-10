@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { fetchWeatherData } from '../../utils/weatherApi';
 import WeatherCard from '../WeatherCard/WeatherCard';
+import { fetchWeatherData } from '../FetchWeatherData';
 import './WeatherGrid.css';
 
 const WeatherGrid = ({ cities, province, onCitySelect }) => {
@@ -9,10 +8,9 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [failedCities, setFailedCities] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const loadWeatherData = async () => {
+    const fetchData = async () => {
       if (!cities || cities.length === 0) {
         setLoading(false);
         return;
@@ -27,11 +25,9 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
       for (const city of cities) {
         try {
           const data = await fetchWeatherData(city);
-          if (data) {
-            newWeatherData[city] = data;
-          }
+          newWeatherData[city] = data;
         } catch (err) {
-          console.error(`Error al cargar datos para ${city}:`, err);
+          console.error(`Error fetching data for ${city}:`, err);
           newFailedCities.push(city);
         }
       }
@@ -41,7 +37,7 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
       setLoading(false);
     };
 
-    loadWeatherData();
+    fetchData();
   }, [cities]);
 
   // const handleCitySelect = (city) => {
@@ -49,15 +45,27 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
   // };
 
   if (loading) {
-    return <div className="loading">Cargando datos del tiempo...</div>;
+    return (
+      <div className="weather-grid">
+        <div className="loading">Cargando datos del tiempo...</div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return (
+      <div className="weather-grid">
+        <div className="error">{error}</div>
+      </div>
+    );
   }
 
   if (!cities || cities.length === 0) {
-    return <div className="no-cities">Selecciona una provincia para ver sus ciudades</div>;
+    return (
+      <div className="weather-grid">
+        <div className="no-cities">Selecciona una provincia para ver el tiempo</div>
+      </div>
+    );
   }
 
   return (

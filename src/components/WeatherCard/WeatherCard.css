@@ -1,64 +1,59 @@
 .weather-card {
-  background: var(--card-bg);
-  border-radius: 1rem;
-  padding: 1.5rem;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .weather-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.weather-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .city-name {
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--text-color);
+  margin-bottom: 0.5rem;
 }
 
 .temperature {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--text-color);
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 .description {
-  color: var(--text-secondary);
+  color: #666;
   margin-bottom: 0.5rem;
 }
 
 .temperature-range {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.max-temp {
+  color: #ff6b6b;
+  margin-bottom: 0.25rem;
 }
 
 .min-temp {
   color: #4dabf7;
 }
 
-.max-temp {
-  color: #ff6b6b;
+.precipitation {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
-.precipitation {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+.weather-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .favorite-button {
@@ -69,11 +64,47 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+  color: #ccc;
+  padding: 0.25rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.favorite-button:hover {
+  color: #ffd700;
 }
 
 .favorite-button.favorite {
+  color: #ffd700;
+}
+
+/* Dark theme styles */
+.dark-theme .weather-card {
+  background-color: #2d3436;
+  color: white;
+}
+
+.dark-theme .description,
+.dark-theme .precipitation {
+  color: #dfe6e9;
+}
+
+.dark-theme .max-temp {
+  color: #ff7675;
+}
+
+.dark-theme .min-temp {
+  color: #74b9ff;
+}
+
+.dark-theme .favorite-button {
+  color: #636e72;
+}
+
+.dark-theme .favorite-button:hover {
+  color: #ffd700;
+}
+
+.dark-theme .favorite-button.favorite {
   color: #ffd700;
 }
 
@@ -86,7 +117,5 @@
     font-size: 2rem;
   }
 
-  .temperature {
-    font-size: 1.5rem;
-  }
+
 }
