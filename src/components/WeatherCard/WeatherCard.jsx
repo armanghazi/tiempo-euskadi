@@ -11,7 +11,8 @@ const WeatherCard = ({
   minTemp,
   precipitation,
   weatherCode,
-  onSelect 
+  onSelect,
+  onFavoriteToggle 
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
@@ -30,6 +31,11 @@ const WeatherCard = ({
     
     localStorage.setItem('favoriteCities', JSON.stringify(newFavorites));
     setIsFavorite(!isFavorite);
+
+    // Call the onFavoriteToggle callback if provided
+    if (onFavoriteToggle) {
+      onFavoriteToggle();
+    }
   };
 
   const handleCardClick = () => {

@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
 import About from './pages/About';
 import CityDetail from './components/CityDetail/CityDetail';
-import Home from './pages/Home';
+import HomePage from './pages/Home';
 import Favorites from './pages/Favorites';
 
 const router = createBrowserRouter([
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />
+        element: <HomePage />
       },
       {
         path: '/city/:city',

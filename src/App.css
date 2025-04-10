@@ -52,14 +52,11 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
-
-
 }
 
 html, body {
   margin: 0;
   padding: 0;
-
 }
 
 .app {
@@ -68,15 +65,58 @@ html, body {
   flex-direction: column;
 }
 
-header {
+.nav {
   background-color: var(--nav-bg);
   padding: 1rem;
+  box-shadow: var(--nav-shadow);
 }
-nav {
+
+.nav-list {
+  list-style: none;
   display: flex;
+  gap: 2rem;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: var(--nav-hover);
+}
+
+.nav-item.active {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--bg-primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent-color);
 }
 
 .logo {
@@ -93,43 +133,6 @@ nav {
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  justify-content: center;
-}
-
-nav a {
-  color: var(--nav-text);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-nav a:hover {
-  background-color: var(--nav-hover);
-}
-
-main {
-  flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-footer {
-  background-color: var(--nav-bg);
-  padding: 1rem;
-  text-align: center;
-  color: var(--nav-text);
 }
 
 .province-selector {

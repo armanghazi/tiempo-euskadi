@@ -3,7 +3,7 @@ import WeatherCard from '../WeatherCard/WeatherCard';
 import { fetchWeatherData } from '../FetchWeatherData';
 import './WeatherGrid.css';
 
-const WeatherGrid = ({ cities, province, onCitySelect }) => {
+const WeatherGrid = ({ cities, province, onCitySelect, onFavoriteToggle }) => {
   const [weatherData, setWeatherData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,7 +25,14 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
       for (const city of cities) {
         try {
           const data = await fetchWeatherData(city);
-          newWeatherData[city] = data;
+          newWeatherData[city] = {
+            temperature: data.current.temperature,
+            description: data.current.description,
+            maxTemp: data.forecast[0].maxTemp,
+            minTemp: data.forecast[0].minTemp,
+            precipitation: data.forecast[0].precipitation,
+            weatherCode: data.current.weatherCode
+          };
         } catch (err) {
           console.error(`Error fetching data for ${city}:`, err);
           newFailedCities.push(city);
@@ -82,6 +89,7 @@ const WeatherGrid = ({ cities, province, onCitySelect }) => {
           precipitation={weatherData[city]?.precipitation}
           weatherCode={weatherData[city]?.weatherCode}
           onSelect={onCitySelect}
+          onFavoriteToggle={onFavoriteToggle}
         />
       ))}
       {failedCities.length > 0 && (

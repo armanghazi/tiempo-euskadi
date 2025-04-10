@@ -1,23 +1,23 @@
 /* Base styles */
 .footer {
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   padding: 1.5rem 2rem;
   font-family: 'Segoe UI', sans-serif;
   font-size: 0.95rem;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--border-color);
   transition: background-color 0.3s ease, color 0.3s ease;
   position: fixedrelative;  
   bottom: 5rem;
   width: 100%;
   text-align: center;
- }
+}
 
 /* Dark mode override */
-.dark-theme .footer {
-  background-color: #1f1f1f;
-  color: #eee;
-  border-top: 1px solid #444;
+[data-theme='dark'] .footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border-color);
 }
 
 /* Flex container */
@@ -33,6 +33,7 @@
 .footer-section {
   display: flex;
   align-items: center;
+  background-color: var(--bg-secondary);
 }
 
 /* Link styles */
@@ -41,18 +42,19 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  color: inherit;
+  color: var(--text-primary);
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #0077b6;
+  color: var(--accent-color);
 }
 
 /* Icon spacing */
 .footer-icon {
   font-size: 1.2rem;
+  color: var(--text-primary);
 }
 
 /* Footer links list */
@@ -62,6 +64,19 @@
   gap: 1.2rem;
   padding: 0;
   margin: 0;
+}
+
+/* Dark mode specific overrides */
+[data-theme='dark'] .footer-link {
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .footer-link:hover {
+  color: var(--accent-color);
+}
+
+[data-theme='dark'] .footer-icon {
+  color: var(--text-primary);
 }
 
 /* Responsive tweaks */

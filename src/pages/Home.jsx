@@ -25,7 +25,7 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <h1>El Tiempo en Euskadi</h1>
+      <h1 className="main-title">El Tiempo en Euskadi</h1>
       
       <div className="controls">
         <ProvinceSelector onProvinceChange={handleProvinceChange} />

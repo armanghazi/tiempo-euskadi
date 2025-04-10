@@ -9,7 +9,7 @@ const About = () => {
       <h1>Acerca de</h1>
       <div className="about-content">
         <p>
-          Esta aplicación de pronóstico del tiempo ha sido desarrollada utilizando <strong>JavaScript</strong>, <strong>React</strong> y la potente herramienta de construcción <strong>Vite</strong>. Estas tecnologías nos permiten ofrecer una interfaz rápida, moderna y eficiente,diseñada específicamente para brindar la mejor experiencia al usuario.
+          Esta aplicación de pronóstico del tiempo ha sido desarrollada utilizando <strong>JavaScript</strong>, <strong>React</strong> y la potente herramienta de construcción <strong>Vite</strong>. Estas tecnologías nos permiten ofrecer una interfaz rápida, moderna y eficiente, diseñada específicamente para brindar la mejor experiencia al usuario.
         </p>
         <p>
           Con esta aplicación, puedes consultar el tiempo meteorológico en tiempo real para las principales ciudades de Euskadi, 
@@ -47,9 +47,10 @@ const About = () => {
           Esta aplicación fue creada por <a href="https://armanghazi.github.io/portfolio" target="_blank" rel="noopener noreferrer">Arman Ghaziaskari Naeini</a>, 
           un estudiante de desarrollo web dedicado a crear soluciones modernas que combinan funcionalidad y diseño, como parte de su proyecto final en Front-End.
         </p>
-
-
-
+        <h2>Agradecimiento</h2>
+        <p>
+          Gracias especiales a <strong>The Bride(BBK Bootcamps)</strong> y <strong>Fundación Novia Salcedo</strong> por darme la oportunidad de aprender desarrollo Front-End. ¡Estoy profundamente agradecido por su apoyo!
+        </p>
       </div>
 
       <ThemeToggle />
@@ -58,3 +59,4 @@ const About = () => {
 };
 
 export default About;
+

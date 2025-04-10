@@ -79,50 +79,6 @@ export const formatDate = (dateString) => {
   return date.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
 };
 
-// Función principal para obtener datos del tiempo
-export const fetchWeatherData = async (city, includeForecast = false) => {
-  try {
-    const coordinates = cityCoordinates[city];
-    if (!coordinates) {
-      throw new Error('Ciudad no encontrada');
-    }
-
-    const { latitude, longitude } = coordinates;
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FMadrid`;
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Error al obtener datos del tiempo');
-    }
-
-    const data = await response.json();
-
-    const currentWeather = {
-      temperature: data.current.temperature_2m,
-      description: getWeatherDescription(data.current.weather_code),
-      weatherCode: data.current.weather_code
-    };
-
-    if (!includeForecast) {
-      return currentWeather;
-    }
-
-    const forecast = data.daily.time.map((date, index) => ({
-      date: new Date(date).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' }),
-      maxTemp: data.daily.temperature_2m_max[index],
-      minTemp: data.daily.temperature_2m_min[index],
-      precipitation: data.daily.precipitation_probability_max[index],
-      description: getWeatherDescription(data.daily.weather_code[index]),
-      weatherCode: data.daily.weather_code[index]
-    }));
-
-    return {
-      current: currentWeather,
-      forecast: forecast
-    };
-  } catch (error) {
-    console.error('Error fetching weather data:', error);
-    throw error;
-  }
-};
+// Export the fetchWeatherData function from FetchWeatherData.jsx
+export { fetchWeatherData } from '../components/FetchWeatherData';
 

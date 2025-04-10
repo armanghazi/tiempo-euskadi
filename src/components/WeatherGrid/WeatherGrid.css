@@ -8,8 +8,8 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow-x: hidden;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /* ========== Weather Grid ========== */
@@ -17,20 +17,24 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* ========== Weather Card ========== */
 .weather-card {
-  background-color: #f0f0f0;
+  background-color: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .weather-card:hover {
@@ -41,12 +45,53 @@ body {
 .weather-card h2 {
   font-size: 1.4em;
   margin-bottom: 10px;
+  color: var(--text-color);
 }
 
 .weather-card p {
   font-size: 1em;
   margin-bottom: 6px;
   line-height: 1.4;
+  color: var(--text-color);
+}
+
+.weather-card .max-temp {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.weather-card .min-temp {
+  color: #4dabf7;
+  font-weight: bold;
+}
+
+.weather-card .description {
+  color: var(--text-secondary);
+}
+
+.weather-card .precipitation {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+}
+
+.city-name {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.temperature {
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ========== Error & No Data Containers ========== */
@@ -61,15 +106,40 @@ body {
   color: #ff4d4d;
 }
 
+/* ========== Dark Mode Styles ========== */
+[data-theme='dark'] .weather-card {
+  background-color: rgba(45, 45, 45, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .weather-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .weather-card .max-temp {
+  color: #ff8787;
+}
+
+[data-theme='dark'] .weather-card .min-temp {
+  color: #74c0fc;
+}
+
 /* ========== Responsive Layouts ========== */
 @media (max-width: 767px) {
   .weather-grid {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 12px;
+    padding: 0.5rem;
+    margin: 0;
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .weather-card {
+    width: 100%;
+    margin: 0;
     padding: 16px;
     font-size: 0.95em;
   }
@@ -83,15 +153,15 @@ body {
   .weather-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 15px;
-    padding: 16px;
+    padding: 0.75rem;
   }
 }
 
 @media (min-width: 1024px) {
   .weather-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 1rem;
   }
 }
 
