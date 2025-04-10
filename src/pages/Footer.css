@@ -7,12 +7,11 @@
   font-size: 0.95rem;
   border-top: 1px solid #ccc;
   transition: background-color 0.3s ease, color 0.3s ease;
-  position: fixed;
-  bottom: 0;
+  position: fixedrelative;  
+  bottom: 5rem;
   width: 100%;
-  
-
-}
+  text-align: center;
+ }
 
 /* Dark mode override */
 .dark-theme .footer {

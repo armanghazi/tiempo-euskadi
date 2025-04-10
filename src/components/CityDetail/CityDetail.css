@@ -7,12 +7,14 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Container */
 .city-detail {
   padding: 1rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
+/* Headings */
 h1 {
   text-align: center;
   font-size: 2.5rem;
@@ -49,7 +51,7 @@ h2 {
   background-color: #e6e6e6;
 }
 
-/* Loading and Error */
+/* Status Messages */
 .loading,
 .error {
   text-align: center;
@@ -57,7 +59,7 @@ h2 {
   margin-top: 2rem;
 }
 
-/* Weather Cards */
+/* Weather Info */
 .weather-info {
   display: flex;
   flex-direction: column;
@@ -71,7 +73,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 1rem;
   text-align: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .weather-icon {
@@ -82,6 +84,7 @@ h2 {
 .temperature .current-temp {
   font-size: 2.2rem;
   font-weight: bold;
+  color: #222;
 }
 
 .description,
@@ -119,17 +122,17 @@ h2 {
 .min-temp {
   color: #5bc0de;
 }
-.temperature .current-temp {
-  color: #222;
-}
-/* Dark Mode */
+
+/* Dark Mode Theme */
 .dark-theme {
   background-color: #1f1f1f;
   color: #e0e0e0;
 }
+
 .dark-theme .temperature .current-temp {
   color: #ffffff;
 }
+
 .dark-theme .back-button,
 .dark-theme .theme-toggle,
 .dark-theme .weather-card,
@@ -150,7 +153,7 @@ h2 {
   background-color: #444;
 }
 
-/* Responsive Layout */
+/* Responsive Design */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;

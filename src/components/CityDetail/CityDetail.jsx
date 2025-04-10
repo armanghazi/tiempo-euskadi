@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchWeatherData } from '../../utils/weatherApi';
 import { getWeatherIcon } from '../../utils/weatherUtils';
+import ThemeToggle from '../ThemeToggle/ThemeToggle.jsx'; 
 import './CityDetail.css';
 
 const CityDetail = () => {
@@ -10,14 +11,6 @@ const CityDetail = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true';
-  });
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', darkMode);
-    document.body.classList.toggle('dark-theme', darkMode);
-  }, [darkMode]);
 
   useEffect(() => {
     const loadWeatherData = async () => {
@@ -37,24 +30,14 @@ const CityDetail = () => {
     loadWeatherData();
   }, [city]);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   if (loading) {
     return (
-      <div className={`city-detail ${darkMode ? 'dark-theme' : ''}`}>
+      <div className="city-detail">
         <div className="header-controls">
           <button className="back-button" onClick={() => navigate(-1)}>
             ← Volver
           </button>
-          <button 
-            className="theme-toggle"
-            onClick={toggleDarkMode}
-            aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-          >
-            {darkMode ? '☀️' : '🌙'}
-          </button>
+          <ThemeToggle />
         </div>
         <div className="loading">Cargando datos del tiempo...</div>
       </div>
@@ -63,18 +46,12 @@ const CityDetail = () => {
 
   if (error) {
     return (
-      <div className={`city-detail ${darkMode ? 'dark-theme' : ''}`}>
+      <div className="city-detail">
         <div className="header-controls">
           <button className="back-button" onClick={() => navigate(-1)}>
             ← Volver
           </button>
-          <button 
-            className="theme-toggle"
-            onClick={toggleDarkMode}
-            aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-          >
-            {darkMode ? '☀️' : '🌙'}
-          </button>
+          <ThemeToggle />
         </div>
         <div className="error">{error}</div>
       </div>
@@ -82,18 +59,12 @@ const CityDetail = () => {
   }
 
   return (
-    <div className={`city-detail ${darkMode ? 'dark-theme' : ''}`}>
+    <div className="city-detail">
       <div className="header-controls">
         <button className="back-button" onClick={() => navigate(-1)}>
           ← Volver
         </button>
-        <button 
-          className="theme-toggle"
-          onClick={toggleDarkMode}
-          aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-        >
-          {darkMode ? '☀️' : '🌙'}
-        </button>
+        <ThemeToggle />
       </div>
       
       <h1>{city}</h1>
@@ -140,4 +111,4 @@ const CityDetail = () => {
   );
 };
 
-export default CityDetail; 
+export default CityDetail;
