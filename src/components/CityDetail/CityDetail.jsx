@@ -70,7 +70,7 @@ const CityDetail = () => {
           <div className="detail-row">
             <div className="detail-item">
               <span className="label">Viento</span>
-              <span className="value">{Math.round(current.windSpeed)} km/h</span>
+              <span className="value">{(current.windSpeed)} km/h</span>
             </div>
             <div className="detail-item">
               <span className="label">Humedad</span>
@@ -91,7 +91,7 @@ const CityDetail = () => {
 
           <div className="detail-row">
             <div className="detail-item">
-              <span className="label">Calidad del Aire (AQI)</span>
+              <span className="label">Calidad del Aire (ICA)</span>
               <span className={`value aqi-${current.aqi}`}>
                 {current.aqi === 'N/A' ? 'N/A' : getAqiDescription(current.aqi)}
               </span>

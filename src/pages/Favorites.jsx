@@ -6,24 +6,33 @@ import './Favorites.css';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   // Function to update favorites from localStorage
   const updateFavoritesFromStorage = () => {
-    const savedFavorites = JSON.parse(localStorage.getItem('favoriteCities')) || [];
-    setFavorites(savedFavorites);
+    try {
+      const saved = localStorage.getItem('favoriteCities');
+      const parsedFavorites = saved ? JSON.parse(saved) : [];
+      setFavorites(parsedFavorites);
+    } catch (error) {
+      console.error('Error reading favorites from localStorage:', error);
+      setFavorites([]);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
-    // Initial load of favorites
     updateFavoritesFromStorage();
 
-    // Add event listener for storage changes
-    window.addEventListener('storage', updateFavoritesFromStorage);
+    const handleStorageChange = () => {
+      updateFavoritesFromStorage();
+    };
 
-    // Cleanup listener on unmount
+    window.addEventListener('storage', handleStorageChange);
+
     return () => {
-      window.removeEventListener('storage', updateFavoritesFromStorage);
+      window.removeEventListener('storage', handleStorageChange);
     };
   }, []);
 
@@ -31,7 +40,6 @@ const Favorites = () => {
     navigate(`/city/${city}`);
   };
 
-  // Function to handle favorite toggle
   const handleFavoriteToggle = () => {
     updateFavoritesFromStorage();
   };
@@ -42,21 +50,23 @@ const Favorites = () => {
         <h1>Lugares Favoritos</h1>
         <ThemeToggle />
       </div>
-      
-      {favorites.length > 0 ? (
-        <WeatherGrid 
-          cities={favorites} 
+
+      {loading ? (
+        <div className="loading">Cargando favoritos...</div>
+      ) : favorites.length > 0 ? (
+        <WeatherGrid
+          cities={favorites}
           onCitySelect={handleCitySelect}
           onFavoriteToggle={handleFavoriteToggle}
         />
       ) : (
         <div className="no-favorites">
-          <p>No tienes Lugares favoritos guardados.</p>
-          <p>Añade Lugares a favoritos desde la página principal.</p>
+          <p>No tienes lugares favoritos guardados.</p>
+          <p>Añade lugares a favoritos desde la página principal.</p>
         </div>
       )}
     </div>
   );
 };
 
-export default Favorites; 
+export default Favorites;

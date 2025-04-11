@@ -10,19 +10,18 @@ function App() {
       <div className="app">
         <header>
           <nav>
-            <div className="logo">
-            <img src="/euskadi.png" alt="Euskadi" />
-            <h3>Pronostico del tiempo del Euskadi</h3>
+            <div className="logo-and-title">
+              <div className="logo">
+                <img src="/euskadi.png" alt="Euskadi" />
+              </div>
+              <h3>Pronostico del tiempo del Euskadi</h3>
             </div>
 
-            <ul>
+            <ul className="nav-links">
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/favorites">Favoritos</Link></li>
               <li><Link to="/about">Acerca de</Link></li>
             </ul>
-           
-
-                        
           </nav>
         </header>
         <main>

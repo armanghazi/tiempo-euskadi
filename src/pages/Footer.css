@@ -7,10 +7,10 @@
   font-size: 0.95rem;
   border-top: 1px solid var(--border-color);
   transition: background-color 0.3s ease, color 0.3s ease;
-  position: fixedrelative;  
-  bottom: 5rem;
+  position: relative; /* Changed from fixedrelative to relative */
+  bottom: auto;      /* Removed fixed bottom positioning */
   width: 100%;
-  text-align: center;
+  text-align: center; /* Default text alignment */
 }
 
 /* Dark mode override */
@@ -26,7 +26,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap; /* allows wrapping on smaller screens */
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for better separation */
 }
 
 /* Footer sections */
@@ -45,6 +45,7 @@
   color: var(--text-primary);
   font-weight: 500;
   transition: color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping for links */
 }
 
 .footer-link:hover {
@@ -61,7 +62,7 @@
 .footer-links {
   list-style: none;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem; /* Increased gap for better spacing */
   padding: 0;
   margin: 0;
 }
@@ -81,21 +82,42 @@
 
 /* Responsive tweaks */
 @media (max-width: 768px) {
+  .footer {
+    padding: 1rem; /* Reduced padding for smaller screens */
+    text-align: center; /* Center text in mobile view */
+  }
+
   .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;   /* Center items horizontally */
+    gap: 1rem;           /* Adjusted gap for stacked items */
+  }
+
+  .footer-section {
+    width: 100%;          /* Make sections take full width */
+    justify-content: center; /* Center content within sections */
+    margin-bottom: 1rem;   /* Add some space between sections */
   }
 
   .footer-links {
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-direction: row;  /* Display links in a row in mobile */
+    justify-content: center; /* Center the links */
+    gap: 1rem;            /* Adjust gap between links */
+    width: 100%;
+  }
+
+  .footer-links li {
+    margin: 0;          /* Reset list item margins */
+  }
+
+  .footer-link {
+    white-space: normal; /* Allow text wrapping for links in mobile if needed */
   }
 }
 
 /* Copyright */
 .copyright {
-  margin: 0;
+  margin-top: 1rem; /* Add some top margin to copyright in mobile */
   font-size: 0.85rem;
   color: inherit;
 }
