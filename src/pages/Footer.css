@@ -1,123 +1,52 @@
-/* Base styles */
 .footer {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
-  padding: 1.5rem 2rem;
+  padding: 2rem 1rem 1rem;
+  margin-top: auto;
+  height: auto ;
   font-family: 'Segoe UI', sans-serif;
   font-size: 0.95rem;
   border-top: 1px solid var(--border-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative; /* Changed from fixedrelative to relative */
-  bottom: auto;      /* Removed fixed bottom positioning */
   width: 100%;
-  text-align: center; /* Default text alignment */
+  text-align: center;
 }
 
-/* Dark mode override */
-[data-theme='dark'] .footer {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-  border-top: 1px solid var(--border-color);
-}
-
-/* Flex container */
-.footer-container {
+.footer-container.compact {
   display: flex;
+  margin-bottom: 1.5rem;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* allows wrapping on smaller screens */
-  gap: 1.5rem; /* Increased gap for better separation */
+}
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
 
-/* Footer sections */
-.footer-section {
-  display: flex;
-  align-items: center;
-  background-color: var(--bg-secondary);
-}
-
-/* Link styles */
 .footer-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 500;
   transition: color 0.3s ease;
-  white-space: nowrap; /* Prevent text wrapping for links */
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .footer-link:hover {
   color: var(--accent-color);
 }
 
-/* Icon spacing */
-.footer-icon {
-  font-size: 1.2rem;
-  color: var(--text-primary);
+.footer-bottom {
+  margin-top: 0.5rem;
 }
 
-/* Footer links list */
-.footer-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem; /* Increased gap for better spacing */
-  padding: 0;
-  margin: 0;
-}
-
-/* Dark mode specific overrides */
-[data-theme='dark'] .footer-link {
-  color: var(--text-primary);
-}
-
-[data-theme='dark'] .footer-link:hover {
-  color: var(--accent-color);
-}
-
-[data-theme='dark'] .footer-icon {
-  color: var(--text-primary);
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .footer {
-    padding: 1rem; /* Reduced padding for smaller screens */
-    text-align: center; /* Center text in mobile view */
+@media (max-width: 600px) {
+  .footer-container.compact {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
   }
-
-  .footer-container {
-    flex-direction: column; /* Stack sections vertically */
-    align-items: center;   /* Center items horizontally */
-    gap: 1rem;           /* Adjusted gap for stacked items */
-  }
-
-  .footer-section {
-    width: 100%;          /* Make sections take full width */
-    justify-content: center; /* Center content within sections */
-    margin-bottom: 1rem;   /* Add some space between sections */
-  }
-
-  .footer-links {
-    flex-direction: row;  /* Display links in a row in mobile */
-    justify-content: center; /* Center the links */
-    gap: 1rem;            /* Adjust gap between links */
-    width: 100%;
-  }
-
-  .footer-links li {
-    margin: 0;          /* Reset list item margins */
-  }
-
-  .footer-link {
-    white-space: normal; /* Allow text wrapping for links in mobile if needed */
-  }
-}
-
-/* Copyright */
-.copyright {
-  margin-top: 1rem; /* Add some top margin to copyright in mobile */
-  font-size: 0.85rem;
-  color: inherit;
 }

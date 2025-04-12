@@ -1,6 +1,5 @@
 import React from 'react';
 import ThemeToggle from '../components/ThemeToggle/ThemeToggle';
-
 import './About.css';
 
 const About = () => {
@@ -12,8 +11,8 @@ const About = () => {
           Esta aplicación de pronóstico del tiempo ha sido desarrollada utilizando <strong>JavaScript</strong>, <strong>React</strong> y la potente herramienta de construcción <strong>Vite</strong>. Estas tecnologías nos permiten ofrecer una interfaz rápida, moderna y eficiente, diseñada específicamente para brindar la mejor experiencia al usuario.
         </p>
         <p>
-          Con esta aplicación, puedes consultar el tiempo meteorológico en tiempo real para las principales ciudades de Euskadi, 
-          así como de otras ciudades importantes alrededor del mundo. Desde Nueva York hasta Tokio, puedes explorar las previsiones del tiempo 
+          Con esta aplicación, puedes consultar el tiempo meteorológico en tiempo real para las principales ciudades de Euskadi,
+          así como de otras ciudades importantes alrededor del mundo. Desde Nueva York hasta Tokio, puedes explorar las previsiones del tiempo
           para las ubicaciones más destacadas del planeta.
         </p>
 
@@ -44,7 +43,7 @@ const About = () => {
 
         <h2>Sobre el autor</h2>
         <p>
-          Esta aplicación fue creada por <a href="https://armanghazi.github.io/portfolio" target="_blank" rel="noopener noreferrer">Arman Ghaziaskari Naeini</a>, 
+          Esta aplicación fue creada por <a href="https://armanghazi.github.io/portfolio" target="_blank" rel="noopener noreferrer">Arman Ghaziaskari Naeini</a>,
           un estudiante de desarrollo web dedicado a crear soluciones modernas que combinan funcionalidad y diseño, como parte de su proyecto final en Front-End.
         </p>
         <h2>Agradecimiento</h2>
@@ -59,4 +58,3 @@ const About = () => {
 };
 
 export default About;
-

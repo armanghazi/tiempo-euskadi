@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import Footer from './pages/Footer';
+import HomePage from './pages/Home';
+import Favorites from './pages/Favorites';
+import About from './pages/About';
+import CityDetail from './components/CityDetail/CityDetail';
 import './App.css';
 
 function App() {
@@ -10,14 +14,12 @@ function App() {
       <div className="app">
         <header>
           <nav>
-            <div className="logo-and-title">
-              <div className="logo">
-                <img src="/euskadi.png" alt="Euskadi" />
-              </div>
+            <div className="logo">
+              <img src="/euskadi.png" alt="Euskadi" />
               <h3>Pronostico del tiempo del Euskadi</h3>
             </div>
 
-            <ul className="nav-links">
+            <ul>
               <li><Link to="/">Inicio</Link></li>
               <li><Link to="/favorites">Favoritos</Link></li>
               <li><Link to="/about">Acerca de</Link></li>
@@ -25,7 +27,12 @@ function App() {
           </nav>
         </header>
         <main>
-          <Outlet />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/city/:city" element={<CityDetail />} />
+          </Routes>
         </main>
         <footer>
           <Footer />
