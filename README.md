@@ -24,7 +24,7 @@ Una aplicación web moderna para consultar el pronóstico del tiempo en las prin
 ## 📋 Requisitos
 
 - Node.js (versión 14 o superior)
-- npm o yarn
+- npm
 
 ## 🛠️ Instalación
 
