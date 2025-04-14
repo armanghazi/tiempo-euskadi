@@ -36,10 +36,10 @@ export const cityCoordinates = {
   'Nueva York':  { "latitude": 40.7128, "longitude": -74.0060 },
   'Los Ángeles': { "latitude": 34.0522, "longitude": -118.2437 },
   'Tokio':       { "latitude": 35.6895, "longitude": 139.6917 },
-  'Pekín':       { "latitude": 39.9042, "longitude": 116.4074 },
   'Isfahan':     { "latitude": 32.6539, "longitude": 51.6660 },
   'Roma':        { "latitude": 41.9028, "longitude": 12.4964 },
-  'Barcelona':   { "latitude": 41.3851, "longitude": 2.1734 }
+  'Lyon': { latitude: 45.75, longitude: 4.85 },
+  'Palma de Mallorca': { latitude: 39.5696, longitude: 2.6502 }
 };
 
 

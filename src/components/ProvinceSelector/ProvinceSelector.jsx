@@ -18,7 +18,7 @@ const provinces = [
   },
   {
     name: "Otras ciudades importantes del mundo",
-    cities: ["Londres", "Nueva York", "Los Ángeles", "Tokio", "Pekín", "Isfahan", "Roma", "Barcelona"]
+    cities: ["Londres", "Nueva York", "Los Ángeles", "Tokio",  "Isfahan", "Roma", "Lyon", "Palma de Mallorca"]
     
   }
 ];
